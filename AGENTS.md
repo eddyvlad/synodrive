@@ -7,7 +7,7 @@
 - Externalize `obsidian` when bundling; everything else is bundled.
 - Use Lucide icon names with `setIcon`/`addRibbonIcon`.
 
-## Checklist before committing
+## Checklist before final handoff/commit
 - Run `npm run lint`, `npm run typecheck`, and `npm run build`.
 - Run `npm test` (Vitest) to verify diff/rename/conflict/delete/backoff coverage.
 - Confirm `dist/` contains `main.js`, `styles.css`, and `manifest.json` after build.
