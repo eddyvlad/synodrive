@@ -1,8 +1,35 @@
-/*
+.synodrive-ribbon {
+  color: var(--interactive-accent);
+}
 
-This CSS file will be included with your plugin, and
-available in the app when your plugin is enabled.
+.synodrive-folder-list {
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 6px;
+  padding: 8px;
+  max-height: 240px;
+  overflow-y: auto;
+  margin-bottom: 12px;
+}
 
-If your plugin does not need CSS, delete this file.
+.synodrive-folder-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 0;
+}
 
-*/
+.synodrive-modal-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+.synodrive-log {
+  background: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  padding: 8px;
+  max-height: 200px;
+  overflow: auto;
+  white-space: pre-wrap;
+}

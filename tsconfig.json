@@ -1,24 +1,23 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "paths": {"*": ["src/*"]},
     "inlineSourceMap": true,
     "inlineSources": true,
     "module": "ESNext",
-    "target": "ES6",
-    "allowJs": true,
+    "target": "ES2020",
     "noImplicitAny": true,
     "moduleResolution": "node",
     "importHelpers": true,
     "isolatedModules": true,
-    "strictNullChecks": true,
-    "lib": [
-      "DOM",
-      "ES5",
-      "ES6",
-      "ES7"
-    ]
+    "strict": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "types": ["node", "vitest"],
+    "lib": ["DOM", "ES2020"],
+    "outDir": "dist"
   },
-  "include": [
-    "**/*.ts"
-  ]
+  "include": ["src/**/*.ts", "tests/**/*.ts"],
+  "exclude": ["dist", "node_modules"]
 }
