@@ -162,6 +162,17 @@ export class SynodriveSettingTab extends PluginSettingTab {
           await this.plugin.saveSettings();
         });
       });
+
+    new Setting(section)
+      .setName("Debug mode")
+      .setDesc("When enabled, requests and responses are logged to the console")
+      .addToggle((toggle) => {
+        toggle.setValue(this.plugin.settings.debug).onChange(async (value) => {
+          this.plugin.settings.debug = value;
+          this.plugin.client.setDebug(value);
+          await this.plugin.saveSettings();
+        });
+      });
   }
 
   private renderDiagnostics(containerEl: HTMLElement) {

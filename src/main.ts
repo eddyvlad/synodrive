@@ -23,6 +23,7 @@ export default class SynodrivePlugin extends Plugin {
     this.client = new DriveClient(DEFAULT_SETTINGS.serverBaseUrl, this.logger, {
       timeoutSeconds: DEFAULT_SETTINGS.timeoutSeconds,
       chunkMb: DEFAULT_SETTINGS.chunkMb,
+      debug: DEFAULT_SETTINGS.debug,
     });
     this.sessionStore = new SecureSessionStore(
       this,
@@ -254,6 +255,7 @@ export default class SynodrivePlugin extends Plugin {
     if (this.client) {
       try {
         this.client.setBaseUrl(this.settings.serverBaseUrl);
+        this.client.setDebug(this.settings.debug);
       } catch (err) {
         this.logger.warn(`Could not apply server URL: ${(err as Error).message}`);
       }

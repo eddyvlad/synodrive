@@ -20,6 +20,7 @@ export interface SynodriveSettings {
   chunkMb: number;
   timeoutSeconds: number;
   backgroundSync: boolean;
+  debug: boolean;
   lastSyncReport?: SyncReport;
   session?: StoredSession;
   encryptionKey?: string;
@@ -67,6 +68,7 @@ export const DEFAULT_SETTINGS: SynodriveSettings = {
   chunkMb: 8,
   timeoutSeconds: 30,
   backgroundSync: true,
+  debug: false,
   session: undefined,
   encryptionKey: undefined,
   cachedLocalIndex: undefined,

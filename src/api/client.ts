@@ -7,6 +7,7 @@ export interface ClientOptions {
   timeoutSeconds: number;
   maxRetries: number;
   chunkMb: number;
+  debug?: boolean;
 }
 
 export interface DriveItem {
@@ -45,6 +46,7 @@ export class DriveClient {
       timeoutSeconds: opts?.timeoutSeconds ?? 30,
       maxRetries: opts?.maxRetries ?? 4,
       chunkMb: opts?.chunkMb ?? 8,
+      debug: opts?.debug ?? false,
     };
   }
 
@@ -54,6 +56,10 @@ export class DriveClient {
 
   setSid(sid: string | null) {
     this.sid = sid;
+  }
+
+  setDebug(debug: boolean) {
+    this.options.debug = debug;
   }
 
   isAuthenticated(): boolean {
@@ -244,6 +250,10 @@ export class DriveClient {
     while (attempt < maxAttempts) {
       attempt += 1;
       try {
+        if (this.options.debug) {
+          // eslint-disable-next-line no-console
+          console.log("[Synodrive] request", { url, method: options.method ?? "GET", headers });
+        }
         const response = await requestUrl({
           url,
           method: options.method ?? "GET",
@@ -252,6 +262,10 @@ export class DriveClient {
           contentType: headers["Content-Type"],
           throw: false,
         });
+        if (this.options.debug) {
+          // eslint-disable-next-line no-console
+          console.log("[Synodrive] response", { url, status: response.status, headers: response.headers });
+        }
 
         if (response.status === 401) {
           throw new Error("Unauthorized");
