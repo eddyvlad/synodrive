@@ -11,6 +11,8 @@
 - Run `npm run lint`, `npm run typecheck`, and `npm run build`.
 - Run `npm test` (Vitest) to verify diff/rename/conflict/delete/backoff coverage.
 - Confirm `dist/` contains `main.js`, `styles.css`, and `manifest.json` after build.
+- Only create commits when explicitly asked to do so; otherwise leave the worktree dirty.
+- Commit messages must follow Conventional Commits (https://www.conventionalcommits.org/en/v1.0.0/#specification).
 
 ## Security and UX
 - Enforce HTTPS for the Synology base URL; reject plain HTTP.
