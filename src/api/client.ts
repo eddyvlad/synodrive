@@ -252,7 +252,12 @@ export class DriveClient {
       try {
         if (this.options.debug) {
           // eslint-disable-next-line no-console
-          console.log("[Synodrive] request", { url, method: options.method ?? "GET", headers });
+          console.log("[Synodrive] request", {
+            url,
+            method: options.method ?? "GET",
+            headers,
+            bodyPreview: options.body instanceof FormData ? "[form-data]" : options.body,
+          });
         }
         const response = await requestUrl({
           url,
@@ -264,7 +269,17 @@ export class DriveClient {
         });
         if (this.options.debug) {
           // eslint-disable-next-line no-console
-          console.log("[Synodrive] response", { url, status: response.status, headers: response.headers });
+          console.log("[Synodrive] response", {
+            url,
+            status: response.status,
+            headers: response.headers,
+            bodyPreview:
+              typeof response.json === "string"
+                ? response.json
+                : response.arrayBuffer
+                ? `[binary ${typeof response.arrayBuffer}]`
+                : response.json,
+          });
         }
 
         if (response.status === 401) {
